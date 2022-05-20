@@ -31,7 +31,9 @@ class flipkart_scrap():
             "p_name_list":[],
             "price_list":[],
             "specifications_list":[],
-            "product_url_list":[]
+            "rating_list":[],
+            "product_url_list":[],
+            "thumbnail_list":[],
         }
         
         for i in range(1,self.no_of_pages+1):
@@ -52,13 +54,13 @@ class flipkart_scrap():
             specifications=self.driver.find_elements(By.CLASS_NAME,'_1xgFaf')
             specifications=[i.text.strip() for i in specifications]
             
-            thumbnail=self.driver.find_elements(By.XPATH,"//img[@class='_396cs4 _3exPp9']")
+            thumbnail=self.driver.find_elements(By.XPATH,"//div[@class='_2kHMtA']//img[@class='_396cs4 _3exPp9']")
             thumbnail=[i.get_attribute('src') for i in thumbnail]
             
             discounted_price=self.driver.find_elements(By.CLASS_NAME,'_3I9_wc _27UcVY')
             discounted_price=[i.get_attribute('textContent') for i in discounted_price]
             
-            rating=self.driver.find_elements(By.CLASS_NAME,'_3LWZlK')
+            rating=self.driver.find_elements(By.XPATH,"//div[@class='_2kHMtA']//div[@class='_3LWZlK']")
             rating=[i.text for i in rating]
             
             product_url=self.driver.find_elements(By.XPATH,"//div[@class='_2kHMtA']//a")
@@ -66,19 +68,19 @@ class flipkart_scrap():
             
             final_data["p_name_list"].extend(p_names)
             final_data["specifications_list"].extend(specifications)
-            # final_data["thumbnail_list"].extend(thumbnail)
+            final_data["thumbnail_list"].extend(thumbnail)
             # final_data["discounted_price_list"].extend(discounted_price)
-            # final_data["rating_list"].extend(rating)
+            final_data["rating_list"].extend(rating)
             final_data["product_url_list"].extend(product_url)
             final_data["price_list"].extend(price)
             
-        print(len(final_data['p_name_list']))
-        print(len(final_data['specifications_list']))
+        # print(len(final_data['p_name_list']))
+        # print(len(final_data['specifications_list']))
         # print(len(final_data['thumbnail_list']))
-        # print(len(final_data["discounted_price_list"]))
+        # # print(len(final_data["discounted_price_list"]))
         # print(len(final_data['rating_list']))
-        print(len(final_data['product_url_list']))
-        print(len(final_data['price_list']))
+        # print(len(final_data['product_url_list']))
+        # print(len(final_data['price_list']))
         
     
         # print(p_name_list)
