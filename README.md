@@ -8,7 +8,7 @@ A simple python selenium based code to extract the data from amazon and flipkart
 2. Make sure you got git installed on your system .
 3. Clone the folder using: git clone https://github.com/nitesh1489/amazkart.git
 4. Make sure to rename env.env -> .env
-5. Make a python virtual environment and install required packages using command: pip install requirement.txt
+5. Make a python virtual environment and install required packages using command: pip install -r requirement.txt
 
 
 ## step2
